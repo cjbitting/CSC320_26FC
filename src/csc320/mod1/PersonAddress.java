@@ -4,24 +4,34 @@ public class PersonAddress {
 
 	public static void main(String[] args) {
 		
-		String firstName;
-		String lastName;
-		String streetAddress;
-		String city;
-		String zipCode;
+		/* pseudocode:
+		 * Declare firstName as String and assign "John"
+		 * Declare lastName as String and assign "Smith"
+		 * Declare streetAddress as String and assign "123 Fiction Lane"
+		 * Declare city as String and assign "Bellevue"
+		 * Declare zipCode as String and assign "68123"
+		 * 
+		 * Print firstName
+		 * Print lastName
+		 * Print streetAddress
+		 * Print city
+		 * Print zipCode
+		 */
 		
-		firstName = "John";
-		lastName = "Smith";
-		streetAddress = "123 Fiction Lane";
-		city = "Bellevue";
-		zipCode = "68123";
+		// Declares and assigns variables
+		String firstName = "John";
+		String lastName = "Smith";
+		String streetAddress = "123 Fiction Lane";
+		String city = "Bellevue";
+		String zipCode = "68123";
 		
+		//Print new line for each variable
 		System.out.println(firstName);
 		System.out.println(lastName);
 		System.out.println(streetAddress);
 		System.out.println(city);
 		System.out.println(zipCode);
-		// TODO Auto-generated method stub
+		
 
 	}
 
