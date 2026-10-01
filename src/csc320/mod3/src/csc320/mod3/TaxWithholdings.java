@@ -15,9 +15,7 @@ public class TaxWithholdings {
 		 prompt user input: "Enter weekly average income: "
 		 if income is valid double
 			if income  < 0 then
-				print "income cannot be negative
-				prompt user
-				read new input
+				print "income cannot be negative"
 			else
 				if income > 500 then
 					taxRate = 0.10
@@ -47,10 +45,10 @@ public class TaxWithholdings {
 		
 		System.out.println("Enter your weekly average income: ");
 		
-		if (scnr.hasNextDouble()) {
-		income = scnr.nextDouble();
+		if (scnr.hasNextDouble()) {  //ensures input is a valid number
+		income = scnr.nextDouble(); 
 		
-			if (income < 0) {
+			if (income < 0) {      //Validates input is positive
 				System.out.println("Error:  Income must be positive.");
 				
 			}
@@ -71,16 +69,15 @@ public class TaxWithholdings {
 		
 				withholdings = (income * taxRate);
 		
-				System.out.println("Your weekly average tax rate is " + (taxRate * 100) + "%");
-				System.out.printf("Your weekly average tax withholdings are $%.2f%n", withholdings);
+				System.out.println("Your weekly average tax rate is " + (taxRate * 100) + "%");  //prints tax rate and converts to percentage
+				System.out.printf("Your weekly average tax withholdings are $%.2f%n", withholdings); //print formatted weekly withholding with 2 decimals
 			}
 			
 		}
 		
 		else {
-			System.out.println("Error: Invalid numeric input.");
-			
-			
+			System.out.println("Error: Invalid numeric input.");  // Error message for string input ex "one thousand"
+				
 		}
 	}
 }
