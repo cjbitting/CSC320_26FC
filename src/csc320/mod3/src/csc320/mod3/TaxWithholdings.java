@@ -17,12 +17,12 @@ public class TaxWithholdings {
 			if income  < 0 then
 				print "income cannot be negative"
 			else
-				if income > 500 then
+				if income < 500 then
 					taxRate = 0.10
 				else if income >= 500 and income < 1500 then
 					taxRate = 0.15
 				else if income >= 1500 and income < 2500 then
-					taxRate = .020
+					taxRate = 0.20
 				else 
 					taxRate = 0.30
 				end if 
