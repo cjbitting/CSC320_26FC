@@ -75,7 +75,7 @@ public class GradeStatistics {
 		 *  PRINT "Maximum Grade" + formatted maximumGrade (two decimals)
 		 *  PRINT "Minimum Grade" + formatted minimumGrade (two decimals)
 		 *  
-		 *  	
+		 *  
 		 */
 		Scanner scnr = new Scanner(System.in);
 		
