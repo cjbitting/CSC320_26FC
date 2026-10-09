@@ -8,7 +8,7 @@ public class GradeStatistics {
 		
 		/*
 		 * Declare numIntputs as integer = 10;
-		 * Declare inputCount as integer = 0;
+		 * Declare inputCount as integer = 1;
 		 * Declare totalScore as double;
 		 * Declare maximumGrade as double;
 		 * Declare minimumGrade as double;
@@ -141,8 +141,7 @@ public class GradeStatistics {
         System.out.printf("Maximum Grade: %.2f%n", maximumGrade);
         System.out.printf("Minimum Grade: %.2f%n", minimumGrade);
 
-		System.out.println(maximumGrade);
-		System.out.println(minimumGrade);
+		
     }
 }
 	
