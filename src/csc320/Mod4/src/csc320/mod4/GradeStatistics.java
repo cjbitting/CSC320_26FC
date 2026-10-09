@@ -79,9 +79,70 @@ public class GradeStatistics {
 		 */
 		Scanner scnr = new Scanner(System.in);
 		
+		int numInputs = 10;
+		double averageGrade = 0.0;
+		double maximumGrade = 0.0;
+		double minimumGrade = 0.0;
+		double totalScore = 0.0;
+		double currValue;
+		int i;
+		int inputCount = 1;
 		
+//For loop to receive 10 inputs and validate that inputs are doubles
+		
+        for (i = 0; i < numInputs; ++i) {
+            System.out.print("Please enter grade " + inputCount + ": ");
+            while (! scnr.hasNextDouble()) {
+                System.out.println("Grade must be input as number ex: 85 or 85.5");
+                System.out.print(" Please re-enter grade " + inputCount + ": ");
+				scnr.next();
+
+          }
+			currValue = scnr.nextDouble();
+
+//Validate input is between 0 and 100 for any re entries
+			while ((currValue < 0) || (currValue > 100)) {
+				System.out.println("Invalid input.  Grade must be in range 0 to 100. ");
+				System.out.print(" Re-enter grade " + inputCount + ": ");
+				
+				
+				while (! scnr.hasNextDouble()){
+					System.out.println("Grade must be input as number.");
+					System.out.print("Re-enter grade " + inputCount + ": ");
+					scnr.next();
+				}
+				currValue = scnr.nextDouble();
+			}
 			
+			totalScore = currValue + totalScore;
 			
-	}
-	
+			if (i == 0) {
+				maximumGrade = currValue;  //sets first input to maximumGrade
+				minimumGrade = currValue;  //sets first input to minimumGrade
+			
+			}
+			else {
+				if (currValue > maximumGrade) { //compare currValue to maximumGrade
+					maximumGrade = currValue;
+				}
+				if (currValue < minimumGrade) {  //compare curValue to minimumGrade
+					minimumGrade = currValue;
+				}
+			
+			}
+			inputCount += 1;
+		}
+        
+        averageGrade = totalScore / numInputs; //calculate average grade
+        
+        //formatted output for variables 
+        
+        System.out.printf("Average Grade: %.2f%n", averageGrade);
+        System.out.printf("Maximum Grade: %.2f%n", maximumGrade);
+        System.out.printf("Minimum Grade: %.2f%n", minimumGrade);
+
+		System.out.println(maximumGrade);
+		System.out.println(minimumGrade);
+    }
 }
+	
