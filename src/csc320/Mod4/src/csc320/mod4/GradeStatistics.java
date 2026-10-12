@@ -25,7 +25,7 @@ public class GradeStatistics {
 		 *    While input not valid double:
 		 *    	PRINT "Grade must be input as number ex: 85 or 85.5"
 		 *    	PROMPT "Please re-enter grade " + inputCount + ": "
-		 *    	Read new input from scanner, disregard invalid inputs
+		 *    	Read and discard non numeric input from scanner
 		 *    END WHILE
 		 *    
 		 *    Read currValue as double
@@ -40,7 +40,7 @@ public class GradeStatistics {
 		 *    	WHILE input is not valid double
 		 *    		PRINT " Grade must be input as number."
 		 *    		PROMPT "Re-enter grade " + inputCount + ": "
-		 *    		Read new input from scanner, disregard invalid inputs
+		 *    		Read and discard non numeric input from scanner
 		 *    	END WHILE
 		 *    
 		 *		Read currValue as double
