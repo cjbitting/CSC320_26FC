@@ -186,7 +186,7 @@ public class WeeklyTemp {
 	    System.out.println("==========================================================================================");
 	    System.out.println("");
 	    System.out.println("Enter the day of the week + the days average temperature in fahrenheit.  Enter 'e' to exit");
-
+	    //reads initial input for 7 days and their temperature
 	    for (i=0; i<7; ++i){
 	        System.out.print("Day: ");
 	        currDay = getValidDay(scnr, validDays);
@@ -198,7 +198,7 @@ public class WeeklyTemp {
 	    
 	    boolean menuRunning= true;
 	    String userChoice;
-	    
+	    //main menu that runs until 'e' is entered
 	    while (menuRunning) {
 	    	System.out.println("----------------------------------------------------------------------------------------");
 	    	System.out.println("Enter a day of week, 'week' for summary, or 'e' for exit.");
@@ -208,13 +208,13 @@ public class WeeklyTemp {
 	    		System.out.println("Exiting program.");
 	    		menuRunning= false;
 	    	}
-	    	
+	    	//prints weekly summary and calculates average temp
 	    	else if (userChoice.equalsIgnoreCase("week")) {
 	    		double weeklySum = 0;
 	    		
 	    		System.out.println("--- Weekly Temperature Report---");
 	    		
-	    		for (j=0; j<WeekDay.size(); ++j) {
+	    		for (j=0; j<WeekDay.size(); ++j) {  // prints formatted 'day: temp'
 	    			System.out.printf("%-10s: %.1f degrees Fahrenheit%n", WeekDay.get(j), DayTemp.get(j));
 	    			weeklySum += DayTemp.get(j);	
 	    		}
@@ -224,10 +224,10 @@ public class WeeklyTemp {
 	    		System.out.printf("Weekly Average Temperature: %.1f degrees Fahrenheit%n", weeklyAverage);
 	    			
 	    	}
-	    	
+	    	//looks for user choice in WeekDay and pulls match with corresponding index in DayTemp
 	    	else {
 	    		boolean dayFound = false;
-	    		for (j=0; j < WeekDay.size(); ++j) {
+	    		for (j=0; j < WeekDay.size(); ++j) { //searches for specific day and prints formatted data if found
 	    			if(userChoice.equalsIgnoreCase(WeekDay.get(j))) {
 	    				System.out.printf("%s's average temperature was %.1f degrees Fahrenheit.%n", WeekDay.get(j), DayTemp.get(j));
 	    				dayFound = true;
@@ -241,12 +241,12 @@ public class WeeklyTemp {
 	    	}	
 	    }
 	}
-
+		//validates input is a double and within range -150 to 115
 	 public static double getValidTemp(Scanner scnr){
 	        int attempts = 0;
 	        int maxAttempts = 3;
-
-	        while (! scnr.hasNextDouble()){
+	       
+	        while (! scnr.hasNextDouble()){  //Increases attempts variable for each bad input.  Exits after 3 invalids
 	            attempts = attempts + 1;
 	            if (attempts >= maxAttempts){
 	                System.out.println("Maximum attempts exceeded.  Exiting Program");
@@ -258,16 +258,16 @@ public class WeeklyTemp {
 	        }
 	        double currTemp = scnr.nextDouble();
 
-	        while((currTemp < -150) || (currTemp > 115)){
+	        while((currTemp < -150) || (currTemp > 115)){  //Ensure currTemp is in range -150 to 115
 	            attempts = attempts +1;
 	            if (attempts >= maxAttempts){
 	                System.out.println("Maximum attempts exceeded.  Exiting Program");
 	                System.exit(0);
 	            }
-	            System.out.println("Daily average temp must be in range -100 to 100");
+	            System.out.println("Daily average temp must be in range -150 to 115");
 	            System.out.print("Re-enter temperature: ");
 
-	            while (! scnr.hasNextDouble()){
+	            while (! scnr.hasNextDouble()){  //Catches non numeric entries during range retry
 	                attempts = attempts + 1;
 	                if (attempts >= maxAttempts){
 	                    System.out.println("Maximum attempts exceeded.  Exiting Program");
@@ -281,19 +281,19 @@ public class WeeklyTemp {
 	        }
 	        return currTemp;
 	    }
-	    
+	    //Takes user input and compares to array of valid input day names
 	    public static String getValidDay(Scanner scnr, String[] validDays){
 	        boolean found = false;
 	        int i = 0;
 	        String currDay = null;
 
-	        while(!found){
+	        while(!found){  //loops until a valid day or 'e' is entered
 	            currDay = scnr.next();
 	            if(currDay.equalsIgnoreCase("e")){
 	                System.out.println("Exiting program");
 	                System.exit(0);
 	            }
-	            for (i=0; i<validDays.length; ++i){
+	            for (i=0; i<validDays.length; ++i){  
 	                if (currDay.equalsIgnoreCase(validDays[i])){
 	                	currDay = validDays[i]; //Grabs clean capitalized version from array ex: 'monday' to 'Monday'
 	                    found = true;
