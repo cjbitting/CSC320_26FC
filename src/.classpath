@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="csc320/mod3/src/|csc320/Mod4/src/|csc320/Portfolio Project/src/|csc320/mod5/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="csc320/mod3/src"/>
+	<classpathentry kind="src" path="csc320/Mod4/src"/>
+	<classpathentry kind="src" path="csc320/mod5/src"/>
+	<classpathentry kind="src" path="csc320/Portfolio Project/src"/>
+	<classpathentry kind="output" path="csc320/Mod4/bin"/>
+</classpath>

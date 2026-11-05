@@ -6,6 +6,7 @@ public class Menu {
 
 	public static void main(String[] args) {
 		Scanner scnr = new Scanner(System.in);
+		AutomobileInventory inventory = new AutomobileInventory();
 		int userChoice;
 		boolean menuRunning = true;
 		
@@ -18,7 +19,7 @@ public class Menu {
 				System.out.println("1. Add Vehicle");
 				System.out.println("2. Remove Vehicle");
 				System.out.println("3. Update Vehicle");
-				System.out.println("4. List Vehicle Information");
+				System.out.println("4. List All Vehicles");
 				System.out.println("5. Export to File");
 				System.out.println("6. Exit");
 				System.out.println("");
@@ -28,16 +29,16 @@ public class Menu {
 				
 				switch(userChoice) {
 					case 1: 
-						//vehicle.addVehicle();
+						inventory.addNewVehicle(scnr);
 						break;
 					case 2:
-						//vehicle.removeVehicle();
+						inventory.removeVehicle(scnr);
 						break;
 					case 3:
-						//vehicle.updateVehicle();
+						inventory.updateVehicle(scnr);
 						break;
 					case 4:
-						//vehicle.listVehicleInformatoin();
+						inventory.displayAllVehicles();
 						break;
 					case 5:
 						System.out.println("Fix me!!");

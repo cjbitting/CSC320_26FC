@@ -100,9 +100,9 @@ public class Automobile {
 		}
 				
 	}
-	public String listVehicleInformation() {
+	public String[] listVehicleInformation() {
 		try {
-			String vehicleData = new String[5];
+			String[] vehicleData = new String[5];
 			vehicleData[0] = "Make: " + this.make;
 			vehicleData[1] = "Model: " + this.model;
 			vehicleData[2] = "Color: " + this.color;
