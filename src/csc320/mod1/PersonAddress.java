@@ -26,11 +26,11 @@ public class PersonAddress {
 		String zipCode = "68123";
 		
 		//Print new line for each variable
-		System.out.println(firstName);
-		System.out.println(lastName);
-		System.out.println(streetAddress);
-		System.out.println(city);
-		System.out.println(zipCode);
+		System.out.println("First Name: " +firstName);
+		System.out.println("Last Name: " +lastName);
+		System.out.println("Street Address: " + streetAddress);
+		System.out.println("City: " + city);
+		System.out.println("Zip Code: " + zipCode);
 		
 
 	}

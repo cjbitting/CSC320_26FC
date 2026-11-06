@@ -32,6 +32,11 @@ START MAIN
     FOR i = 0 TO 6 STEP 1
         PROMPT "Day: "
         currDay = CALL getValidDay(scnr, validDays)
+        IF weekDay contains currDay THEN
+        	Print "Error: " + currDay + " has already been entered." 
+        	Decrement i-1
+        	continue
+        END IF
         
         PROMPT "Average Temp: "
         currTemp = CALL getValidTemp(scnr)
@@ -173,8 +178,8 @@ public class WeeklyTemp {
 
 	public static void main(String[] args) {
 		
-		ArrayList<String> WeekDay = new ArrayList<String>();
-	    ArrayList<Double> DayTemp = new ArrayList<Double>();
+		ArrayList<String> weekDay = new ArrayList<String>();
+	    ArrayList<Double> dayTemp = new ArrayList<Double>();
 	    String[] validDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	    Scanner scnr = new Scanner(System.in);
 	    String currDay;
@@ -190,10 +195,15 @@ public class WeeklyTemp {
 	    for (i=0; i<7; ++i){
 	        System.out.print("Day: ");
 	        currDay = getValidDay(scnr, validDays);
+	        if (weekDay.contains(currDay)) {
+	        	System.out.println("Error: " + currDay + " has already been entered");
+	        	i = i-1;//decrements counter back one
+	        	continue;//skips to next iteration prompting day again without asking for temp
+	        }
 	        System.out.print("Average Temp: ");
 	        currTemp = getValidTemp(scnr);
-	        WeekDay.add(currDay);
-	        DayTemp.add(currTemp);
+	        weekDay.add(currDay);
+	        dayTemp.add(currTemp);
 	    }
 	    
 	    boolean menuRunning= true;
@@ -214,12 +224,12 @@ public class WeeklyTemp {
 	    		
 	    		System.out.println("--- Weekly Temperature Report---");
 	    		
-	    		for (j=0; j<WeekDay.size(); ++j) {  // prints formatted 'day: temp'
-	    			System.out.printf("%-10s: %.1f degrees Fahrenheit%n", WeekDay.get(j), DayTemp.get(j));
-	    			weeklySum += DayTemp.get(j);	
+	    		for (j=0; j<weekDay.size(); ++j) {  // prints formatted 'day: temp'
+	    			System.out.printf("%-10s: %.1f degrees Fahrenheit%n", weekDay.get(j), dayTemp.get(j));
+	    			weeklySum += dayTemp.get(j);	
 	    		}
 
-	    		double weeklyAverage = weeklySum / WeekDay.size();
+	    		double weeklyAverage = weeklySum / weekDay.size();
 	    		System.out.println("----------------------------------------------------------------------------------------");
 	    		System.out.printf("Weekly Average Temperature: %.1f degrees Fahrenheit%n", weeklyAverage);
 	    			
@@ -227,9 +237,9 @@ public class WeeklyTemp {
 	    	//looks for user choice in WeekDay and pulls match with corresponding index in DayTemp
 	    	else {
 	    		boolean dayFound = false;
-	    		for (j=0; j < WeekDay.size(); ++j) { //searches for specific day and prints formatted data if found
-	    			if(userChoice.equalsIgnoreCase(WeekDay.get(j))) {
-	    				System.out.printf("%s's average temperature was %.1f degrees Fahrenheit.%n", WeekDay.get(j), DayTemp.get(j));
+	    		for (j=0; j < weekDay.size(); ++j) { //searches for specific day and prints formatted data if found
+	    			if(userChoice.equalsIgnoreCase(weekDay.get(j))) {
+	    				System.out.printf("%s's average temperature was %.1f degrees Fahrenheit.%n", weekDay.get(j), dayTemp.get(j));
 	    				dayFound = true;
 	    				break;
 	    			}
@@ -273,7 +283,7 @@ public class WeeklyTemp {
 	                    System.out.println("Maximum attempts exceeded.  Exiting Program");
 	                    System.exit(0);
 	                }
-	                System.out.println("Temperature must be entered as number between -150 ex: 65 or 65.5");
+	                System.out.println("Temperature must be entered as number in range -150 to 115 ex: 65 or 65.5");
 	                System.out.print("Re-enter temperature: ");
 	                scnr.next();
 	            }

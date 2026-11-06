@@ -14,8 +14,8 @@ public class TaxWithholdings {
 		 Declare withholding as double
 		 prompt user input: "Enter weekly average income: "
 		 if income is valid double
-			if income  < 0 then
-				print "income cannot be negative"
+			if income  <= 0 then
+				print "Income must be positive."
 			else
 				if income < 500 then
 					taxRate = 0.10
@@ -33,6 +33,8 @@ public class TaxWithholdings {
 				print "Your weekly average tax withholdings are: " + formatted withholding with 2 decimal places
 				
 			end if
+		else
+			print "Error: Invalid numeric input."
 		end if
 		
 		*/
@@ -48,7 +50,7 @@ public class TaxWithholdings {
 		if (scnr.hasNextDouble()) {  //ensures input is a valid number
 		income = scnr.nextDouble(); 
 		
-			if (income < 0) {      //Validates input is positive
+			if (income <= 0) {      //Validates input is positive number
 				System.out.println("Error:  Income must be positive.");
 				
 			}

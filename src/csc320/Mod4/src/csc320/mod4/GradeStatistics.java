@@ -15,14 +15,21 @@ public class GradeStatistics {
 		 * Declare averageGrade as double: 
 		 * Declare currValue as double;
 		 * Declare i as integer;
+		 * Declare maxAttempts as int = 0;
 		 * 
 		 * Initialize Scanner
 		 * 
 		 * for i=0; i < numInputs; ++i
+		 * 	  attempts = 0;
 		 *    PROMPT: "Please enter grade " + inputCount + ": "
 		 *    
 		 *    TYPE VALIDATION:  loops if input not numeric
 		 *    While input not valid double:
+		 *    	attempts = attempts +1
+		 *    	IF attempts >= maxAttempts THEN
+		 *    		Print "Maximum invalid attempts exceeded.  Exiting program."
+		 *    		return
+		 *    	END IF
 		 *    	PRINT "Grade must be input as number ex: 85 or 85.5"
 		 *    	PROMPT "Please re-enter grade " + inputCount + ": "
 		 *    	Read and discard non numeric input from scanner
@@ -32,12 +39,22 @@ public class GradeStatistics {
 		 *    
 		 *    RANGE VALIDATION: loops while grade not within range 0 to 100
 		 *    WHILE currValue < 0 or currValue > 100
+		 *    	attempts = attempts +1
+		 *    	IF attempts >= maxAttempts THEN
+		 *    		Print "Maximum invalid attempts exceeded.  Exiting program."
+		 *    		return
+		 *    	END IF
 		 *    	PRINT "Invalid input.  Grade must be in range 0 to 100."
 		 *    	PROMPT "Please re-enter grade " + inputCount + ": "
 		 *    	
 		 *    	Inner type validation for re attempts
 		 *    
 		 *    	WHILE input is not valid double
+		 *    		attempts = attempts +1
+		 *    	IF attempts >= maxAttempts THEN
+		 *    		Print "Maximum invalid attempts exceeded.  Exiting program."
+		 *    		return
+		 *    	END IF
 		 *    		PRINT " Grade must be input as number."
 		 *    		PROMPT "Re-enter grade " + inputCount + ": "
 		 *    		Read and discard non numeric input from scanner
@@ -87,26 +104,45 @@ public class GradeStatistics {
 		double currValue;
 		int i;
 		int inputCount = 1;
+		int maxAttempts = 3;
+		
 		
 //For loop to receive 10 inputs and validate that inputs are doubles
 		
         for (i = 0; i < numInputs; ++i) {
+        	int attempts = 0;  //Added:  Resets count for each new grade
             System.out.print("Please enter grade " + inputCount + ": ");
             while (! scnr.hasNextDouble()) {
+            	attempts = attempts + 1;//Added increment counter
+				if (attempts >= maxAttempts) {
+					System.out.println("Maximum invalid attempts exceeded.  Exiting program.");
+					return;
+				}
                 System.out.println("Grade must be input as number ex: 85 or 85.5");
                 System.out.print(" Please re-enter grade " + inputCount + ": ");
 				scnr.next();
 
-          }
+            }
 			currValue = scnr.nextDouble();
 
 //Validate input is between 0 and 100 for any re entries
 			while ((currValue < 0) || (currValue > 100)) {
+				attempts = attempts + 1;
+				if (attempts >= maxAttempts) {
+					System.out.println("Maximum invalid attempts exceeded.  Exiting program.");
+					return;
+				}
 				System.out.println("Invalid input.  Grade must be in range 0 to 100. ");
 				System.out.print(" Re-enter grade " + inputCount + ": ");
 				
 				
+				
 				while (! scnr.hasNextDouble()){
+					attempts = attempts + 1;
+					if (attempts >= maxAttempts) {
+						System.out.println("Maximum invalid attempts exceeded.  Exiting program.");
+						return;
+					}
 					System.out.println("Grade must be input as number.");
 					System.out.print("Re-enter grade " + inputCount + ": ");
 					scnr.next();
@@ -142,6 +178,6 @@ public class GradeStatistics {
         System.out.printf("Minimum Grade: %.2f%n", minimumGrade);
 
 		
-    }
+	}
 }
 	
